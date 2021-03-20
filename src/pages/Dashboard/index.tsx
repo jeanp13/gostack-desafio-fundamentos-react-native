@@ -36,15 +36,14 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadProducts(): Promise<void> {
       const response = await api.get('/products');
-      setProducts(response.data.products);
+      setProducts(response.data);
+      // await AsyncStorage.removeItem('@GoMarketplace:products');
     }
-
     loadProducts();
   }, []);
 
   function handleAddToCart(item: Product): void {
-    console.log('id');
-    console.log(item.id);
+    console.log('id', item.id);
     addToCart(item);
   }
 
